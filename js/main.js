@@ -13,7 +13,7 @@ function stopAndAddTo(item, classname) {
     var video = $('.video', item).html();
     console.log(video);
     var yht = '<div class="yhteystiedot"><button class="btn btn-primary" href="#">Go to website</button></div>';
-    var some = '<img src="../img/some.png" class="some img-responsive"></img>';
+    var some = '<img src="img/some.png" class="some img-responsive"></img>';
     $('.' + classname +' ul').append('<li><h3>' + $('h2', item).html() + '</h3>' + $('.description', item).html() + video + yht + some + '</li>');
     if(item.index() === 0) {
     	endOfItems();
