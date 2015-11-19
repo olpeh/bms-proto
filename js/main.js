@@ -2,34 +2,35 @@
  * jTinder initialization
  */
 
+function autoPlay() {
+    var index = $('.video iframe').length -1;
+    playNextVideo(index);
+};
+
+function stopAndAddTo(item, classname) {
+	// set the status text
+    stopVideo($('.video', item));
+    var video = $('.video', item).html();
+    console.log(video);
+    var yht = '<div class="yhteystiedot"><button class="btn btn-primary" href="#">Go to website</button></div>';
+    var some = '<img src="../img/some.png" class="some img-responsive"></img>';
+    $('.' + classname +' ul').append('<li><h3>' + $('h2', item).html() + '</h3>' + $('.description', item).html() + video + yht + some + '</li>');
+    if(item.index() === 0) {
+    	endOfItems();
+    }
+    else {
+    	playNextVideo(item.index() -1);
+    }
+}
+
 $("#tinderslide").jTinder({
 	// dislike callback
     onDislike: function (item) {
-	    // set the status text
-	    stopVideo($('.video', item));
-	    var video = $('.video', item).html().replace("&amp;autoplay=1", "");
-	    console.log(video);
-        $('.disliked ul').append('<li><h3>' + $('h2', item).html() + '</h3>' + $('.description', item).html() + video + '</li>');
-        if(item.index() === 0) {
-        	endOfItems();
-        }
-        else {
-        	playNextVideo(item.index() -1);
-        }
+    	stopAndAddTo(item, "disliked");
     },
 	// like callback
     onLike: function (item) {
-	    // set the status text
-	    stopVideo($('.video', item));
-	    var video = $('.video', item).html().replace("&amp;autoplay=1", "");
-	    console.log(video);
-        $('.liked ul').append('<li><h3>' + $('h2', item).html() + '</h3>' + $('.description', item).html() + video + '</li>');
-        if(item.index() === 0) {
-        	endOfItems();
-        }
-        else {
-        	playNextVideo(item.index() -1);
-        }
+    	stopAndAddTo(item, "liked");
     },
 	animationRevertSpeed: 200,
 	animationSpeed: 400,
@@ -75,6 +76,7 @@ function endOfItems() {
 	checkIfNoDislikes();
 	checkIfNoLikes();
 	$('.wrap').hide();
+	$('.actions').hide();
 	$('.end-of-content').show();
 }
 

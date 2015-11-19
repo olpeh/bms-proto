@@ -6,6 +6,18 @@ body {
     overflow-x: hidden;
 }
 
+#navbar > form {
+    float: right;
+}
+@media screen and (max-width:768px) {
+    #navbar > form {
+        float: none;
+    }
+    #navbar > form > button {
+        margin-top: 10px;
+    }
+}
+
 .content .row .wrap  {
 	min-height: 380px;
     padding: 0;
@@ -19,12 +31,31 @@ body {
     padding: 0 5px;
     margin: 35px 0;
 }
+#tinderslide li .video iframe {
+}
+#tinderslide > ul > li > .video {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 15px 35px 15px;
+}
+
 
 #tinderslide {
     width: 85%;
 }
 
+#tinderslide > ul > li > .description {
+    font-size: 12px;
+}
+#tinderslide > ul > li > h2 {
+    font-size: 26px;
+    margin-top: 8px;
+}
 
+.liked ul,
+.disliked ul {
+    padding: 0;
+}
 .liked ul li,
 .disliked ul li {
     display: block;
@@ -50,6 +81,36 @@ body {
 	padding: 30px;
 	text-align: center;
 }
+
+.end-of-content ul {
+    padding: 0;
+}
+
+.end-of-content ul li {
+    list-style: none;
+}
+
+.end-of-content ul li button.btn {
+    margin: 10px auto;
+    width: 180px;
+}
+
+.navbar {
+    z-index: 1031;
+}
+
+
+.liked > ul > li > .embed-responsive,
+.disliked > ul > li > .embed-responsive {
+    margin: 18px 0;
+}
+
+.liked > ul > li > .yhteystiedot > button,
+.disliked > ul > li > .yhteystiedot > button {
+    margin-bottom: 18px;
+}
+
+
 
 
 
