@@ -10,7 +10,7 @@ function autoPlay() {
 function stopAndAddTo(item, classname) {
 	// set the status text
     stopVideo($('.video', item));
-    var video = $('.video', item).html();
+    var video = $('.video', item).html().replace('onload="autoPlay()"', '');
     console.log(video);
     var yht = '<div class="yhteystiedot"><button class="btn btn-primary" href="#">Go to website</button></div>';
     var some = '<img src="img/some2.png" class="some img-responsive"></img>';
