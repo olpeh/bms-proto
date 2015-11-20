@@ -90,7 +90,7 @@ body {
     list-style: none;
 }
 
-.end-of-content ul li button.btn {
+.end-of-content ul li .btn {
     margin: 10px auto;
     width: 180px;
 }
