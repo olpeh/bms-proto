@@ -9,9 +9,8 @@ function autoPlay() {
 
 function stopAndAddTo(item, classname) {
 	// set the status text
-    stopVideo($('.video', item));
+    stopVideo(item.index());
     var video = $('.video', item).html().replace('onload="autoPlay()"', '');
-    console.log(video);
     var yht = '<div class="yhteystiedot"><button class="btn btn-primary" href="#">Go to website</button></div>';
     var some = '<img src="img/some2.png" class="some img-responsive"></img>';
     $('.' + classname +' ul').append('<li><h3>' + $('h2', item).html() + '</h3>' + $('.description', item).html() + video + yht + some + '</li>');
@@ -39,9 +38,19 @@ $("#tinderslide").jTinder({
 	dislikeSelector: '.dislike'
 });
 
-function stopVideo(videoDiv) {
-	var iframe = $('iframe', videoDiv)[0].contentWindow;
+function stopVideo(idx) {
+	var lastVid = $('.video')[idx];
+	var iframe = $('iframe', lastVid)[0].contentWindow;
     iframe.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+}
+
+function stopAllVideos() {
+	var videos = $('.video');
+	$.each(videos, function(index, video) {
+		console.log(index);
+		var iframe = $('iframe', video)[0].contentWindow;
+    	iframe.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+	});
 }
 
 function playNextVideo(index) {
@@ -81,6 +90,7 @@ function endOfItems() {
 }
 
 $('.show-likes').click(function(e) {
+	stopAllVideos();
 	e.preventDefault();
 	checkIfNoLikes();
 	$('.end-of-content').hide();
@@ -93,6 +103,7 @@ $('.show-likes').click(function(e) {
 })
 
 $('.show-dislikes').click(function(e) {
+	stopAllVideos();
 	e.preventDefault();
 	checkIfNoDislikes();
 	$('.end-of-content').hide();
