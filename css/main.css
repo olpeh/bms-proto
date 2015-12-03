@@ -110,10 +110,11 @@ body {
     margin-bottom: 18px;
 }
 
-
-
-
-
+@media screen and (min-width:769px) {
+    .content {
+        margin-top: 100px;
+    }
+}
 
 
 
